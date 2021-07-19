@@ -3,6 +3,8 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"type": "module",
+	"repository": "git@github.com:michaeltp93/devops-nodejs-workflow.git",
+	"author": "Michael Trejos Pulgarin <michael.trejosp@hotmail.es>",
 	"license": "MIT",
 	"scripts": {
 		"start": "node src/index.js",

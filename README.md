@@ -68,3 +68,23 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-
 # cambiar los permisos
 sudo chmod +x /usr/local/bin/docker-compose
 ```
+
+**Nota:** En producción, tenemos que tener cuidado de no compartir nuestras contraseñas.
+
+- Una vez cambiadas nuestras variables de entorno, continuamos en nuestro servidor linux.
+
+```bash
+# crear variables de entorno en nuestro servidor (manera manual)
+export SESSION_SECRET=<variable de entorno>
+
+# mostrart variables de entorno
+printenv
+```
+
+- Lo más común es crear un archivo .env en el servidor `vim .env`
+
+- Luego, tenemos que editar el archivo **.profile**
+
+```vim
+set -o allexport; source /root/.env; set +o allexport
+```
