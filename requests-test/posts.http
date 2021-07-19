@@ -1,0 +1,28 @@
+GET http://localhost:3200
+
+###
+
+GET http://localhost:3200/api/v1
+
+###
+GET http://localhost:3200/api/v1/posts/60eef0994a58f704785b62ba
+
+###
+POST http://localhost:3200/api/v1/posts
+Content-Type: application/json
+
+{
+  "title": "Wlcome to my api",
+  "body": "Api body"
+}
+
+###
+PATCH  http://localhost:3200/api/v1/posts/60eef1194a58f704785b62c0
+Content-Type: application/json
+
+{
+  "title": "third Post Test",
+  "body": "This is the third post body"
+}
+###
+DELETE  http://localhost:3200/api/v1/posts/60eef1194a58f704785b62c0

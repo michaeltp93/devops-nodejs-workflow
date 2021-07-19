@@ -1,0 +1,37 @@
+{
+	"name": "devops-nodejs-workflow",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"license": "MIT",
+	"scripts": {
+		"start": "node src/index.js",
+		"dev": "nodemon -L src/index.js",
+		"docker-dev:up": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
+		"docker-dev:up2": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-app=2",
+		"docker-dev:build": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build",
+		"docker-dev:build2": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --scale node-app=2 --build",
+		"docker-dev:down": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
+		"docker:logs1": "docker logs devops-nodejs-workflow_node-app_1",
+		"docker:logs2": "docker logs devops-nodejs-workflow_node-app_2",
+		"docker:logs-server": "docker logs devops-nodejs-workflow_nginx_1",
+		"docker-dev:restart": "yarn docker-dev:down && yarn docker-dev:up",
+		"docker-dev:rebuild": "yarn docker-dev:down && yarn docker-dev:build && docker:clean",
+		"docker-dev:rebuild2": "yarn docker-dev:down && yarn docker-dev:build2",
+		"docker-redis:cli": "docker exec -it devops-nodejs-workflow_redis_1 redis-cli",
+		"docker-node:bash": "docker exec -it devops-nodejs-workflow_node-app_1 bash",
+		"docker:clean": "docker rmi (docker images | tail -n +2 | awk '$1 == \"<none>\" {print $'3'}')"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"connect-redis": "^6.0.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2",
+		"mongoose": "^5.13.2",
+		"redis": "^3.1.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.12"
+	}
+}
