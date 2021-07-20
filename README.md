@@ -88,3 +88,20 @@ printenv
 ```vim
 set -o allexport; source /root/.env; set +o allexport
 ```
+
+#### Importante clonar el repositorio de github de nuestro proyecto en nuestro servidor. En mi caso:
+
+```bash
+# crear direactorio app
+mkdir app
+cd app
+
+# clonar repositorio
+git clone https://github.com/michaeltp93/devops-nodejs-workflow
+
+# build nuestro docker container (en mi caso, utilizo script con yarn)
+yarn docker-prod:build
+
+# o
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```

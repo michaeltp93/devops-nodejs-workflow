@@ -22,7 +22,9 @@
 		"docker-dev:rebuild2": "yarn docker-dev:down && yarn docker-dev:build2",
 		"docker-redis:cli": "docker exec -it devops-nodejs-workflow_redis_1 redis-cli",
 		"docker-node:bash": "docker exec -it devops-nodejs-workflow_node-app_1 bash",
-		"docker:clean": "docker rmi (docker images | tail -n +2 | awk '$1 == \"<none>\" {print $'3'}')"
+		"docker:clean": "docker rmi (docker images | tail -n +2 | awk '$1 == \"<none>\" {print $'3'}')",
+		"docker-prod:up": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
+		"docker-prod:build": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
